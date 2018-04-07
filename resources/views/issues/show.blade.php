@@ -18,7 +18,7 @@
 
                         <hr>
 
-                        <div class="issueDescription">
+                        <div class="issue-description-full">
                             {!! nl2br(htmlspecialchars($issue->description)) !!}
                         </div>
 
