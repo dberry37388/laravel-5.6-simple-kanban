@@ -74,6 +74,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 
+    @stack('scripts')
+
     @if (session()->has('flash'))
         <script>
             flash('{{ session('flash') }}', '{{ session('flashType') }}');

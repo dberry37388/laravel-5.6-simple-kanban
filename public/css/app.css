@@ -13089,3 +13089,7 @@ a.text-dark:focus {
   width: 400px;
 }
 
+.sortable-ghost {
+  opacity: .3;
+}
+
