@@ -12,7 +12,9 @@
                     <div class="card-body">
                         <div class="issueMetaData">
                             <small>
-                                Created by <a href="#">{{ $issue->creator->name }}</a> {{ $issue->created_at->diffForHumans() }}
+                                Created by <a href="#">{{ $issue->creator->name }}</a>
+                                {{ $issue->created_at->diffForHumans() }} in
+                                <a href="{{ route('showLane', $issue->lane) }}">{{ $issue->lane->title }}</a>
                             </small>
                         </div>
 

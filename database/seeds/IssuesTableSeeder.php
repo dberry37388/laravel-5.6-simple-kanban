@@ -11,7 +11,13 @@ class IssuesTableSeeder extends Seeder
      */
     public function run()
     {
-        create(\App\Issue::class, ['user_id' => 1], rand(2, 10));
-        create(\App\Issue::class, ['user_id' => 2], rand(2, 10));
+        \App\User::all()->each(function($user) {
+            \App\Lane::all()->each(function($lane) use ($user) {
+                create(\App\Issue::class, [
+                    'user_id' => $user->id,
+                    'lane_id' => $lane->id
+                ], rand(5,20));
+            });
+        });
     }
 }

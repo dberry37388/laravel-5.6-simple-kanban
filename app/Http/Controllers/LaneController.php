@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Lanes\CreateLaneRequest;
 use App\Http\Requests\Lanes\UpdateLaneRequest;
+use App\Issue;
 use App\Lane;
 use Illuminate\Http\Request;
 
@@ -20,11 +21,11 @@ class LaneController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -34,7 +35,7 @@ class LaneController extends Controller
      */
     public function create()
     {
-        //
+        return view('lanes.create');
     }
 
     /**
@@ -63,6 +64,8 @@ class LaneController extends Controller
      */
     public function show(Lane $lane)
     {
+        $lane->with('issues');
+
         return view('lanes.show', compact('lane'));
     }
 
@@ -74,7 +77,7 @@ class LaneController extends Controller
      */
     public function edit(Lane $lane)
     {
-        //
+        return view('lanes.edit', compact('lane'));
     }
 
     /**

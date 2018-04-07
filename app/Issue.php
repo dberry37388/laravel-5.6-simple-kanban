@@ -24,7 +24,8 @@ class Issue extends Model
      * @var array
      */
     protected $with = [
-        'creator'
+        'creator',
+        'lane'
     ];
 
     /**

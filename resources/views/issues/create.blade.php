@@ -11,6 +11,26 @@
 
                     <div class="card-body">
                         <form action="{{ route('storeIssue') }}" method="post">
+
+                            <!-- Lane -->
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <select name="lane_id" id="lane_id" class="form-control">
+                                        <option value="">-- Select Lane --</option>
+
+                                        @foreach(\App\Lane::all() as $lane)
+                                            <option
+                                                    value="{{ $lane->id }}"
+                                                    {{ old('lane_id') == $lane->id ? 'selected' :
+                                                    null }}
+                                            >
+                                                {{ $lane->title }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             <!-- Title -->
                             <div class="form-group row">
                                 <div class="col-sm-12">

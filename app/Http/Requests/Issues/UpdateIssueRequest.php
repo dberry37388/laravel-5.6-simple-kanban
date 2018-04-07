@@ -24,6 +24,7 @@ class UpdateIssueRequest extends FormRequest
     public function rules()
     {
         return [
+            'lane_id' => 'required|exists:lanes,id',
             'title' => 'required|max:300',
             'description' => 'max:3000'
         ];
