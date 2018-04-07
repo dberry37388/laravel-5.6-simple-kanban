@@ -123,7 +123,7 @@ class ManageIssuesTest extends TestCase
 
         $issue = create(Issue::class);
 
-        $newValues = ['title' => 'New Title'];
+        $newValues = ['title' => 'New Title', 'description' => 'New Description'];
 
         $this->put(route('updateIssue', $issue), $newValues)
             ->assertRedirect('login');
