@@ -48,6 +48,7 @@ class IssueController extends Controller
     {
         $issue = Issue::create([
             'user_id' => auth()->id(),
+            'lane_id' => $request->lane_id,
             'title' => $request->title,
             'description' => $request->description
         ]);

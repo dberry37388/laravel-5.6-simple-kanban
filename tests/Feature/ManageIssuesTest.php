@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Issue;
+use App\Lane;
 use Illuminate\Auth\AuthenticationException;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -31,7 +32,7 @@ class ManageIssuesTest extends TestCase
      *
      * @return void
      */
-    public function testAnAuthorizedUserCanCreateIssues()
+    public function testAnAuthenticatedUserCanCreateIssues()
     {
         $this->signIn();
 
@@ -63,13 +64,18 @@ class ManageIssuesTest extends TestCase
      *
      * @return void
      */
-    public function testAnIssueRequiresADescription()
+    public function testAnIssueRequiresAValidLane()
     {
         $this->withExceptionHandling()
             ->signIn();
 
-        $this->createIssue(['description' => null])
-            ->assertSessionHasErrors('description');
+        create(Lane::class, [], 2);
+
+        $this->createIssue(['lane_id' => null])
+            ->assertSessionHasErrors('lane_id');
+
+        $this->createIssue(['lane_id' => 999])
+            ->assertSessionHasErrors('lane_id');
     }
 
     /**

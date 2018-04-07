@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Issue extends Model
+class Lane extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,19 +12,8 @@ class Issue extends Model
      * @var array
      */
     protected $fillable = [
-        'description',
-        'lane_id',
         'title',
         'user_id'
-    ];
-
-    /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
-    protected $with = [
-        'creator'
     ];
 
     /**
@@ -38,12 +27,12 @@ class Issue extends Model
     }
 
     /**
-     * The lane that the issue belongs to.
+     * Issues that belong to this lane.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function lane()
+    public function issues()
     {
-        return $this->belongsTo(Lane::class);
+        return $this->hasMany(Issue::class);
     }
 }

@@ -8,7 +8,7 @@ use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class IssueTest extends TestCase
+class LaneTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -17,11 +17,11 @@ class IssueTest extends TestCase
      *
      * @return void
      */
-    public function testAnIssueHasACreator()
+    public function testAnLaneHasACreator()
     {
-        $issue = create(Issue::class);
+        $lane = create(Lane::class);
 
-        $this->assertInstanceOf(User::class, $issue->creator);
+        $this->assertInstanceOf(User::class, $lane->creator);
     }
 
     /**
@@ -29,10 +29,10 @@ class IssueTest extends TestCase
      *
      * @return void
      */
-    public function testAnIssueHasALane()
+    public function testAnLaneHasIssues()
     {
-        $issue = create(Issue::class);
+        $lane = create(Lane::class);
 
-        $this->assertInstanceOf(Lane::class, $issue->lane);
+        $this->assertContainsOnlyInstancesOf(Issue::class, $lane->issues);
     }
 }

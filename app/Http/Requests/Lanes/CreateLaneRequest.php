@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Issues;
+namespace App\Http\Requests\Lanes;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateIssueRequest extends FormRequest
+class CreateLaneRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,6 @@ class CreateIssueRequest extends FormRequest
     {
         return [
             'title' => 'required|max:300',
-            'lane_id' => 'required|exists:lanes,id',
-            'description' => 'max:3000'
         ];
     }
 }
