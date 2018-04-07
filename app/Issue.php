@@ -18,6 +18,15 @@ class Issue extends Model
     ];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'creator'
+    ];
+
+    /**
      * The user who created the issue.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

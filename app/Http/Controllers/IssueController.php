@@ -35,7 +35,7 @@ class IssueController extends Controller
      */
     public function create()
     {
-        //
+        return view('issues.create');
     }
 
     /**
@@ -51,6 +51,8 @@ class IssueController extends Controller
             'title' => $request->title,
             'description' => $request->description
         ]);
+
+        flash("Issue #{$issue->id} was created.");
 
         return redirect(route('showIssue', $issue));
     }
@@ -74,7 +76,7 @@ class IssueController extends Controller
      */
     public function edit(Issue $issue)
     {
-        //
+        return view('issues.edit', compact('issue'));
     }
 
     /**
@@ -90,6 +92,8 @@ class IssueController extends Controller
         $this->authorize('update', $issue);
 
         $issue->update($request->validated());
+
+        flash("Issue #{$issue->id} was updated.");
 
         return redirect(route('showIssue', $issue));
     }
@@ -109,6 +113,8 @@ class IssueController extends Controller
             $issue->delete();
         } catch (\Exception $e) {
         }
+
+        flash('Issue was deleted.');
 
         return redirect(route('issuesIndex'));
     }

@@ -10,12 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -34,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li><a class="nav-link" href="{{ route('issuesIndex') }}">Backlog</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -70,6 +67,17 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <flash :timeout="5000" :display-icons="true" transition="fade"></flash>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    @if (session()->has('flash'))
+        <script>
+            flash('{{ session('flash') }}', '{{ session('flashType') }}');
+        </script>
+    @endif
 </body>
 </html>

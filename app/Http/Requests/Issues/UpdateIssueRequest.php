@@ -25,7 +25,7 @@ class UpdateIssueRequest extends FormRequest
     {
         return [
             'title' => 'required|max:300',
-            'description' => 'required|max:3000'
+            'description' => 'max:3000'
         ];
     }
 }
