@@ -18,3 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'issues'], function() {
+    Route::get('/', 'IssueController@index')->name('issuesIndex');
+    Route::post('/', 'IssueController@store')->name('storeIssue');
+    Route::get('{issue}', 'IssueController@show')->name('showIssue');
+    Route::put('{issue}', 'IssueController@update')->name('updateIssue');
+    Route::delete('{issue}', 'IssueController@destroy')->name('deleteIssue');
+
+});
