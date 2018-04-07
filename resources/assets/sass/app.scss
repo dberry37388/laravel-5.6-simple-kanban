@@ -22,3 +22,31 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.issue-meta-data-preview {
+  margin-bottom: 0.5rem;
+}
+
+.board-wrapper {
+  overflow-x: auto;
+}
+
+.board-container {
+  display: table;
+}
+
+.board-item-row {
+  display: table-row;
+}
+
+.board-item-wrapper {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.board-item {
+  margin-right: 20px;
+  width: 400px;
+}
+
+

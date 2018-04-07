@@ -38,3 +38,7 @@ Route::group(['prefix' => 'issues'], function() {
     Route::put('{issue}', 'IssueController@update')->name('updateIssue');
     Route::delete('{issue}', 'IssueController@destroy')->name('deleteIssue');
 });
+
+Route::group(['prefix' => 'boards'], function() {
+    Route::get('/', 'BoardController@index')->name('boardsIndex');
+});
