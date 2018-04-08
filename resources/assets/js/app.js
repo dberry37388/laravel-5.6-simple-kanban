@@ -31,8 +31,18 @@ window.flash = function(message, type) {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('backlog-component', require('./components/Backlog.vue'));
+Vue.component('paginator', require('./components/Paginator'));
 Vue.component('flash', require('vue-flash'));
+
+Vue.mixin({
+    methods: {
+        route: route,
+    }
+});
+
+import auth from './mixins/auth';
+Vue.mixin(auth);
 
 const app = new Vue({
     el: '#app'

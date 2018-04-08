@@ -10,6 +10,15 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    @routes
+
+    <script>
+        window.App = {!!  json_encode([
+            'currentUser' => auth()->user(),
+            'signedIn' => auth()->check(),
+        ]) !!}
+    </script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">

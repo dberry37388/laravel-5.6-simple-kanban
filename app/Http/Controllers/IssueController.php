@@ -23,7 +23,9 @@ class IssueController extends Controller
      */
     public function index()
     {
-        $issues = Issue::all();
+        if (request()->wantsJson()) {
+            return response(Issue::paginate(10), 201);
+        }
 
         return view('issues.index', compact('issues'));
     }
