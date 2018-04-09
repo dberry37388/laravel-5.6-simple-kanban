@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <backlog-component></backlog-component>
+    <all-issues></all-issues>
 @endsection

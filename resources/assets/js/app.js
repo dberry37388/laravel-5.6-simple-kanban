@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -31,9 +30,14 @@ window.flash = function(message, type) {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('backlog-component', require('./components/Backlog.vue'));
+Vue.component('all-issues', require('./components/AllIssues.vue'));
 Vue.component('paginator', require('./components/Paginator'));
+Vue.component('pagination', require('./components/Pagination'));
 Vue.component('flash', require('vue-flash'));
+
+Vue.component('passport-clients', require('./components/passport/Clients.vue'));
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue'));
+Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
 
 Vue.mixin({
     methods: {

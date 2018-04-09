@@ -6,12 +6,12 @@
                     <h2>Backlog</h2>
                 </div>
 
-                <div v-for="issue in issues">
+                <div v-for="issue in issues.data">
                     <issue-preview :issue="issue"></issue-preview>
                 </div>
 
                 <div class="mt-3">
-                    <paginator :dataSet="dataSet" @changed="fetch"></paginator>
+                    <pagination :pagination="pagination" @paginate="fetch" :offset="4"></pagination>
                 </div>
             </div>
         </div>
@@ -26,8 +26,10 @@
 
         data() {
             return {
-                issues: [],
-                dataSet: false
+                pagination: {
+                    current_page: '/api/issues'
+                },
+                issues: []
             }
         },
 
@@ -41,13 +43,16 @@
 
         methods: {
             fetch(page) {
-                axios.get(this.url(page)).then(this.refresh);
+                axios.get(`${this.pagination.current_page}`)
+                    .then(response => {
+                        this.issues = response.data;
+                        this.pagination = response.data.links;
+
+                        this.refresh();
+                    });
             },
 
-            refresh({data}) {
-                this.dataSet = data;
-                this.issues = data.data;
-
+            refresh() {
                 setTimeout(() => {
                     window.scroll({
                         top: 0,
@@ -58,13 +63,17 @@
             },
 
             url(page) {
-                if (! page) {
-                    let query = location.search.match(/page=(\d+)/);
+                let query = location.search.match(/page=(\d+)/);
 
-                    page = query ? query[1] : 1;
+                if (query) {
+                    query = query[1];
+                } else {
+                    query = 1
                 }
 
-                return `${location.pathname}?page=${page}`;
+                console.log(`${page}?page=${query}`);
+
+                return `${page}?page=${query}`;
             }
         }
     }

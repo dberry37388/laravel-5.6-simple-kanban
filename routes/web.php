@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('settings/passport', 'UserPassportController@show')->name('managePassport');
+
 Route::group(['prefix' => 'lanes'], function() {
     Route::get('/', 'LaneController@index')->name('laneIndex');
     Route::get('/create', 'LaneController@create')->name('createLane');
