@@ -2,10 +2,6 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="mb-3">
-                    <h2>Backlog</h2>
-                </div>
-
                 <div v-for="issue in issues.data">
                     <issue-preview :issue="issue"></issue-preview>
                 </div>
@@ -23,11 +19,12 @@
     import IssuePreview from './IssuePreview';
 
     export default {
+        props: ['url'],
 
         data() {
             return {
                 pagination: {
-                    current_page: '/api/issues'
+                    current_page: this.url,
                 },
                 issues: []
             }
@@ -61,20 +58,6 @@
                     });
                 }, 100);
             },
-
-            url(page) {
-                let query = location.search.match(/page=(\d+)/);
-
-                if (query) {
-                    query = query[1];
-                } else {
-                    query = 1
-                }
-
-                console.log(`${page}?page=${query}`);
-
-                return `${page}?page=${query}`;
-            }
         }
     }
 </script>

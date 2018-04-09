@@ -30,7 +30,8 @@ window.flash = function(message, type) {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('all-issues', require('./components/AllIssues.vue'));
+Vue.component('issues', require('./components/Issues.vue'));
+Vue.component('lane', require('./components/Lane.vue'));
 Vue.component('paginator', require('./components/Paginator'));
 Vue.component('pagination', require('./components/Pagination'));
 Vue.component('flash', require('vue-flash'));

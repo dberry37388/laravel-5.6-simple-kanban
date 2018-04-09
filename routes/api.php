@@ -19,6 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'auth:api', 'throttle:60,1'], function() {
 
+    Route::group(['prefix' => 'lanes'], function() {
+        Route::get('{lane}/issues', function ($lane) {
+            return \App\Http\Resources\IssueResource::collection(\App\Issue::where('lane_id', $lane)->paginate());
+        });
+    });
+
     Route::group(['prefix' => 'issues'], function() {
         Route::get('/', function () {
             return \App\Http\Resources\IssueResource::collection(\App\Issue::paginate());

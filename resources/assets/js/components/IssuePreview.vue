@@ -26,7 +26,7 @@
             <hr>
 
             <div class="issue-description">
-                <truncate clamp="..." :length="75" type="html" less="show less"
+                <truncate clamp="..." :length="100" type="html" less="show less"
                           :text="nl2br(issue.description)" actionClass="text-muted text-bold pull-right"></truncate>
             </div>
         </div>
