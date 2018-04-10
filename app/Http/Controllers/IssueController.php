@@ -117,6 +117,10 @@ class IssueController extends Controller
         } catch (\Exception $e) {
         }
 
+        if (request()->wantsJson()) {
+            return response('Issue was deleted', 201);
+        }
+
         flash('Issue was deleted.');
 
         return redirect(route('issuesIndex'));

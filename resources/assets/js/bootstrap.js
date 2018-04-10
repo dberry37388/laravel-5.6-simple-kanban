@@ -14,6 +14,7 @@ try {
     require('bootstrap');
 
     window.Sortable = require('sortablejs');
+    window.bootbox = require('bootbox');
 } catch (e) {}
 
 /**

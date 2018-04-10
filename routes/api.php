@@ -29,5 +29,9 @@ Route::group(['middleware' => 'auth:api', 'throttle:60,1'], function() {
         Route::get('/', function () {
             return \App\Http\Resources\IssueResource::collection(\App\Issue::paginate());
         });
+
+        Route::get('{issue}', function ($issue) {
+            return \App\Http\Resources\IssueResource::make(\App\Issue::where('id', $issue)->first());
+        });
     });
 });
